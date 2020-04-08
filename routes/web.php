@@ -31,8 +31,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/dash', function () {
         return view('tasks', [
             'tasks' => Task::orderBy('created_at', 'asc')->get(),
-        ]);
-    });
+        ]); 
+    })
+    ->middleware('is_admin')    
+    ->name('admin');
 
     /**
      * Add New Task
@@ -67,8 +69,5 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 Auth::routes();
 
-Route::get('/home', function () {
-    return redirect("home");
-});
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');

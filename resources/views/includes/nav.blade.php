@@ -1,9 +1,8 @@
 <nav class="navbar has-background-black-ter" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item has-text-white is-size-4" href="/">
-      Приложение для построения задач
+      TODO
     </a>
-
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
