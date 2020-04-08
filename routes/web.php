@@ -15,12 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+
+
 Route::group(['middleware' => ['web', 'auth']], function () {
+
+    Route::get('/', function () {
+        return view('welcome', [
+            'tasks' => Task::orderBy('created_at', 'asc')->get(),
+        ]);
+    });
     /**
      * Show Task Dashboard
      */
 
-    Route::get('/', function () {
+    Route::get('/dash', function () {
         return view('tasks', [
             'tasks' => Task::orderBy('created_at', 'asc')->get(),
         ]);
@@ -44,7 +52,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         $task->name = $request->name;
         $task->save();
 
-        return redirect('/');
+        return redirect('/dash');
     });
 
     /**
@@ -53,7 +61,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::delete('/task/{id}', function ($id) {
         Task::findOrFail($id)->delete();
 
-        return redirect('/');
+        return redirect('/dash');
     });
 });
 

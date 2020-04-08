@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <!-- Отобржение теущих задач-->
+        <!-- Current Tasks -->
         @if (count($tasks) > 0)
         <div class="panel">
             <div class="panel-heading">
@@ -44,6 +44,12 @@
             </div>
 
             <div class="panel-body">
+                {{-- <table class="table table-striped task-table">
+                    <thead>
+                        <th>Дело</th>
+                        <th>&nbsp;</th>
+                    </thead>
+                    <tbody> --}}
                 @foreach ($tasks as $task)
                 <a class="panel-block">
                     <button class="button is-rounded">
